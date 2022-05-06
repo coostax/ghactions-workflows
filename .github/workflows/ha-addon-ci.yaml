@@ -166,10 +166,7 @@ jobs:
             echo "::set-output name=platform::linux/386"
           elif [[ "${{ matrix.architecture }}" = "armhf" ]]; then
             echo "::set-output name=platform::linux/arm/v6"
-          elif [[ "${{ matrix.architecture }}" = "armv7" ]]; then
-            echo "::set-output name=platform::linux/arm/v7"
-          elif [[ "${{ matrix.architecture }}" = "aarch64" ]]; then
-            echo "::set-output name=platform::linux/arm64/v8"
+          elif [[ "${{ matrix.architecture }}"line-lengthlinux/arm64/v8"
           else
             echo "::error ::Could not determine platform for architecture ${{ matrix.architecture }}"
             exit 1
@@ -188,9 +185,10 @@ jobs:
           push: false
           context: ${{ needs.information.outputs.target }}
           file: ${{ needs.information.outputs.target }}/Dockerfile
+          # yamllint disable rule:line-length
           cache-from: |
             type=local,src=/tmp/.docker-cache
-            ghcr.io/${{ inputs.ghcr_repo }}/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:edge
+            ghcr.io/${{ inputs.ghcr_repo }}/ha-addons/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:edge
           cache-to: type=local,mode=max,dest=/tmp/.docker-cache-new
           platforms: ${{ steps.flags.outputs.platform }}
           build-args: |

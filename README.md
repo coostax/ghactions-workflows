@@ -10,7 +10,7 @@ A collection of GitHub Actions Workflows to be reused in other projects
 ## About
 
 This repository contains GitHub Actions Workflows that are shared for my other repos.
-Some of these actions are based on the [addons-workflow-repository].
+Some of these actions are based on the [addons-workflow-repository] with some modifications.
 
 It maintains all our reusable workflows in a single place.
 
