@@ -53,7 +53,7 @@ jobs:
           if [[ ! -z "${{ inputs.slug }}" ]]; then
             slug="${{ inputs.slug }}"
           fi
-          echo "slug::$slug" >> $GITHUB_OUTPUT
+          echo "slug=$slug" >> "$GITHUB_OUTPUT"
       - name: ℹ️ Gather version and environment
         id: release
         run: |
@@ -70,8 +70,8 @@ jobs:
             fi
           fi
 
-          echo "environment::${environment}" >> $GITHUB_OUTPUT
-          echo "version::${version}" >> $GITHUB_OUTPUT
+          echo "environment=${environment}" >> "$GITHUB_OUTPUT"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
 
   deploy:
     name: 👷 Build & Deploy ${{ matrix.architecture }}
@@ -104,20 +104,20 @@ jobs:
       - name: ℹ️ Compose build flags
         id: flags
         run: |
-          echo "date::$(date +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_OUTPUT
+          echo "date=$(date +"%Y-%m-%dT%H:%M:%SZ")" >> "$GITHUB_OUTPUT"
           from=$(yq --no-colors eval ".build_from.${{ matrix.architecture }}" "${{ needs.information.outputs.build }}")
-          echo "from::${from}" >> $GITHUB_OUTPUT
+          echo "from=${from}" >> "$GITHUB_OUTPUT"
 
           if [[ "${{ matrix.architecture}}" = "amd64" ]]; then
-            echo "platform::linux/amd64" >> $GITHUB_OUTPUT
+            echo "platform=linux/amd64" >> "$GITHUB_OUTPUT"
           elif [[ "${{ matrix.architecture }}" = "i386" ]]; then
-            echo "platform::linux/386" >> $GITHUB_OUTPUT
+            echo "platform=linux/386" >> "$GITHUB_OUTPUT"
           elif [[ "${{ matrix.architecture }}" = "armhf" ]]; then
-            echo "platform::linux/arm/v6" >> $GITHUB_OUTPUT
+            echo "platform=linux/arm/v6" >> "$GITHUB_OUTPUT"
           elif [[ "${{ matrix.architecture }}" = "armv7" ]]; then
-            echo "platform::linux/arm/v7" >> $GITHUB_OUTPUT
+            echo "platform=linux/arm/v7" >> "$GITHUB_OUTPUT"
           elif [[ "${{ matrix.architecture }}" = "aarch64" ]]; then
-            echo "platform::linux/arm64/v8" >> $GITHUB_OUTPUT
+            echo "platform=linux/arm64/v8" >> "$GITHUB_OUTPUT"
           else
             echo "::error ::Could not determine platform for architecture ${{ matrix.architecture }}"
             exit 1
