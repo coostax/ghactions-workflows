@@ -19,7 +19,7 @@ jobs:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v3
       - name: 🚀 Run mdl
-        uses: actionshub/markdownlint@2.0.2
+        uses: actionshub/markdownlint@v2.1.2
 
   lint-shellcheck:
     name: Shellcheck
@@ -28,7 +28,7 @@ jobs:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v3
       - name: 🚀 Run Shellcheck
-        uses: ludeeus/action-shellcheck@1.1.0
+        uses: ludeeus/action-shellcheck@2.0.0
         env:
           SHELLCHECK_OPTS: -s bash
 
@@ -39,4 +39,4 @@ jobs:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v3
       - name: 🚀 Run YAMLLint
-        uses: frenck/action-yamllint@v1.1
+        uses: frenck/action-yamllint@v1.4.0
