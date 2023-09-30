@@ -1,6 +1,7 @@
 ---
 name: Publish AddOn
 
+# yamllint disable-line rule:truthy
 on:
   workflow_call:
     inputs:
@@ -12,7 +13,7 @@ on:
       DISPATCH_TOKEN:
         required: true
 
-jobs:      
+jobs:
   publish:
     name: 📢 Publish Add-on
     runs-on: ubuntu-latest
