@@ -7,10 +7,10 @@ on:
     secrets:
       UPDATER_TOKEN:
         required: true
-        
+
 concurrency:
   group: queue
-  
+
 jobs:
   publish:
     name: Publish add-on update
