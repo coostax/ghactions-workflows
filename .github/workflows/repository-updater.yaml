@@ -16,10 +16,6 @@ jobs:
     name: Publish add-on update
     runs-on: ubuntu-latest
     steps:
-      - name: Set Git Identity
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions"
       - name: 🚀 Run Repository Updater
         uses: hassio-addons/repository-updater@v1.3.0
         with:
