@@ -61,5 +61,5 @@ SOFTWARE.
 [github-actions-shield]: https://github.com/coostax/ghactions-workflows/actions/workflows/workflows-ci.yaml/badge.svg
 [github-actions]: https://github.com/coostax/ghactions-workflows/actions/workflows/workflows-ci.yaml
 [license-shield]: https://img.shields.io/github/license/coostax/ghactions-workflows.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
 [addons-workflow-repository]: https://github.com/hassio-addons/workflows
