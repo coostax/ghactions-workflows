@@ -16,6 +16,11 @@ jobs:
     name: Publish add-on update
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Git user
+        run: |
+          git config --global user.name "Paulo Costa"
+          git config --global user.email "1605751+coostax@users.noreply.github.com"
+
       - name: 🚀 Run Repository Updater
         uses: hassio-addons/repository-updater@v1.3.0
         with:
