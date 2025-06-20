@@ -115,7 +115,7 @@ jobs:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v4
       - name: 🚀 Run Prettier
-        uses: creyD/prettier_action@v4.6
+        uses: creyD/prettier_action@v4.5
         with:
           only_changed: true
           dry: true
