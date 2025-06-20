@@ -99,10 +99,18 @@ jobs:
     steps:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v4
-      - name: 🚀 Run Prettier
-        uses: creyD/prettier_action@v4.5
         with:
-          prettier_options: --write **/*.{json,js,md,yaml}
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
+          # This is important to fetch the changes to the previous commit
+          fetch-depth: 0
+      - name: 🚀 Run Prettier
+        uses: creyD/prettier_action@v4.6
+        with:
+          only_changed: true
+          dry: true
+          prettier_options: --check --write **/*.{json,js,md,yaml}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
